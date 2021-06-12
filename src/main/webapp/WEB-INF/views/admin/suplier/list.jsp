@@ -1,8 +1,8 @@
 <%@include file="/common/taglib.jsp" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<c:url var="newAPI" value="/api/unit"/>
-<c:url var="newURL" value="/quan-tri/don-vi/danh-sach"/>
+<c:url var="newAPI" value="/api/suplier"/>
+<c:url var="newURL" value="/quan-tri/nha-cung-cap/danh-sach"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -13,7 +13,7 @@
 
 <body>
 <div class="main-content">
-    <form action="<c:url value='/quan-tri/don-vi/danh-sach'/>" id="formSubmit" method="get">
+    <form action="<c:url value='/quan-tri/nha-cung-cap/danh-sach'/>" id="formSubmit" method="get">
 
         <div class="main-content-inner">
             <div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -37,7 +37,7 @@
                             <div class="table-btn-controls">
                                 <div class="pull-right tableTools-container">
                                     <div class="dt-buttons btn-overlap btn-group">
-                                        <c:url var="createURL" value="/quan-tri/don-vi/chinh-sua"/>
+                                        <c:url var="createURL" value="/quan-tri/nha-cung-cap/chinh-sua"/>
                                         <a flag="info"
                                            class="dt-button buttons-colvis btn btn-white btn-primary btn-bold"
                                            data-toggle="tooltip"
@@ -63,7 +63,11 @@
                                     <table class="table table-bordered" style="text-align:center; font-size:16px">
                                         <thead>
                                         <tr>
-                                            <th>Tên đơn vị sản phẩm</th>
+                                            <th>Tên nhà cung cấp</th>
+                                            <th>Địa chỉ</th>
+                                            <th>Điện thoại</th>
+                                            <th>Email</th>
+                                            <th>Ngày hợp tác</th>
                                             <th>Ngày thêm</th>
                                             <th>Người thêm</th>
                                             <th>Ngày sửa</th>
@@ -76,12 +80,16 @@
                                         <c:forEach var="item" items="${model.listResult}">
                                             <tr>
                                                 <td>${item.displayName}</td>
+                                                <td>${item.address}</td>
+                                                <td>${item.phone}</td>
+                                                <td>${item.email}</td>
+                                                <td>${item.contractDate}</td>
                                                 <td>${item.createdDate}</td>
                                                 <td>${item.createdBy}</td>
                                                 <td>${item.modifiedDate}</td>
                                                 <td>${item.modifiedBy}</td>
                                                 <td>
-                                                    <c:url var="updateURL" value="/quan-tri/don-vi/chinh-sua">
+                                                    <c:url var="updateURL" value="/quan-tri/nha-cung-cap/chinh-sua">
                                                         <c:param name="id" value="${item.id}"/>
                                                     </c:url>
                                                     <a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
