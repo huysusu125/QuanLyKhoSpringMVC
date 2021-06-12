@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <div id="sidebar" class="sidebar                  responsive                    ace-save-state">
@@ -51,7 +51,7 @@
                     <b class="arrow"></b>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="<c:url value='/quan-tri/nha-cung-cap/danh-sach?page=1&limit=20'/>">
                         <i class="menu-icon fa fa-caret-right"></i>
                         DS nhà cung cấp
                     </a>

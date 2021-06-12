@@ -26,8 +26,8 @@ public class UnitController {
 
     @RequestMapping(value = "/quan-tri/don-vi/danh-sach", method = RequestMethod.GET)
     public ModelAndView showListUnit(@RequestParam("page") int page,
-                                 @RequestParam("limit") int limit,
-                                 HttpServletRequest request) {
+                                     @RequestParam("limit") int limit,
+                                     HttpServletRequest request) {
         UnitDTO model = new UnitDTO();
         model.setPage(page);
         model.setLimit(limit);

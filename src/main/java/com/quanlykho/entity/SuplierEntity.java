@@ -4,8 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -24,7 +24,8 @@ public class SuplierEntity extends BaseEntity{
     private String Email;
 
     @Column(name = "contractdate")
-    private Date ContractDate;
+
+    private java.sql.Date ContractDate;
 
     @OneToMany(mappedBy = "suplier")
     private List<ObjectEntity> objects = new ArrayList<>();

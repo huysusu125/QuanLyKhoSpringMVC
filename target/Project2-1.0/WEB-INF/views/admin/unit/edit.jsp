@@ -48,13 +48,13 @@
                                 <c:if test="${not empty model.id}">
                                     <button class="btn btn-info" type="button" id="btnAddOrUpdateNew">
                                         <i class="ace-icon fa fa-check bigger-110"></i>
-                                        Cập nhật bài viết
+                                        Cập nhật
                                     </button>
                                 </c:if>
                                 <c:if test="${empty model.id}">
                                     <button class="btn btn-info" type="button" id="btnAddOrUpdateNew">
                                         <i class="ace-icon fa fa-check bigger-110"></i>
-                                        Thêm bài viết
+                                        Thêm
                                     </button>
                                 </c:if>
 
