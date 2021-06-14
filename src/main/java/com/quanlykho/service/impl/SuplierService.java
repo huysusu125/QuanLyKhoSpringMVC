@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class SuplierService implements ISuplierService {
@@ -62,5 +64,15 @@ public class SuplierService implements ISuplierService {
         for (long id : ids) {
             suplierRepository.delete(id);
         }
+    }
+
+    @Override
+    public Map<Long, String> findAll() {
+        Map<Long, String> result = new HashMap<>();
+        List<SuplierEntity> entities = suplierRepository.findAll();
+        for (SuplierEntity entity : entities) {
+            result.put(entity.getId(), entity.getDisplayName());
+        }
+        return result;
     }
 }

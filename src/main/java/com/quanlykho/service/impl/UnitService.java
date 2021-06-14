@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class UnitService implements IUnitService {
@@ -61,5 +63,15 @@ public class UnitService implements IUnitService {
         for (long id : ids) {
             unitRepository.delete(id);
         }
+    }
+
+    @Override
+    public Map<Long, String> findAll() {
+        Map<Long, String> result = new HashMap<>();
+        List<UnitEntity> entities = unitRepository.findAll();
+        for(UnitEntity item : entities) {
+            result.put(item.getId(), item.getDisplayName());
+        }
+        return result;
     }
 }

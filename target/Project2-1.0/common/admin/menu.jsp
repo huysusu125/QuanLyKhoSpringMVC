@@ -57,6 +57,13 @@
                     </a>
                     <b class="arrow"></b>
                 </li>
+                <li>
+                    <a href="<c:url value='/quan-tri/mat-hang/danh-sach?page=1&limit=20'/>">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        DS mặt hàng
+                    </a>
+                    <b class="arrow"></b>
+                </li>
             </ul>
         </li>
     </ul>

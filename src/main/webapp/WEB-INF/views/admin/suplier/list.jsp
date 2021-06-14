@@ -68,10 +68,6 @@
                                             <th>Điện thoại</th>
                                             <th>Email</th>
                                             <th>Ngày hợp tác</th>
-                                            <th>Ngày thêm</th>
-                                            <th>Người thêm</th>
-                                            <th>Ngày sửa</th>
-                                            <th>Người sửa</th>
                                             <th>Thao tác</th>
                                             <th>Chọn</th>
                                         </tr>
@@ -84,10 +80,7 @@
                                                 <td>${item.phone}</td>
                                                 <td>${item.email}</td>
                                                 <td>${item.contractDate}</td>
-                                                <td>${item.createdDate}</td>
-                                                <td>${item.createdBy}</td>
-                                                <td>${item.modifiedDate}</td>
-                                                <td>${item.modifiedBy}</td>
+
                                                 <td>
                                                     <c:url var="updateURL" value="/quan-tri/nha-cung-cap/chinh-sua">
                                                         <c:param name="id" value="${item.id}"/>

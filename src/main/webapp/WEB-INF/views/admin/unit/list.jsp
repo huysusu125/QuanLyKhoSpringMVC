@@ -64,10 +64,6 @@
                                         <thead>
                                         <tr>
                                             <th>Tên đơn vị sản phẩm</th>
-                                            <th>Ngày thêm</th>
-                                            <th>Người thêm</th>
-                                            <th>Ngày sửa</th>
-                                            <th>Người sửa</th>
                                             <th>Thao tác</th>
                                             <th>Chọn</th>
                                         </tr>
@@ -76,10 +72,6 @@
                                         <c:forEach var="item" items="${model.listResult}">
                                             <tr>
                                                 <td>${item.displayName}</td>
-                                                <td>${item.createdDate}</td>
-                                                <td>${item.createdBy}</td>
-                                                <td>${item.modifiedDate}</td>
-                                                <td>${item.modifiedBy}</td>
                                                 <td>
                                                     <c:url var="updateURL" value="/quan-tri/don-vi/chinh-sua">
                                                         <c:param name="id" value="${item.id}"/>
