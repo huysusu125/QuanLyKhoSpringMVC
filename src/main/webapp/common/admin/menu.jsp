@@ -64,6 +64,27 @@
                     </a>
                     <b class="arrow"></b>
                 </li>
+                <li>
+                    <a href="<c:url value='/quan-tri/khach-hang/danh-sach?page=1&limit=20'/>">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        DS khách hàng
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li>
+                    <a href="<c:url value='/quan-tri/khach-hang/danh-sach?page=1&limit=20'/>">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Nhập hàng
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li>
+                    <a href="<c:url value='/quan-tri/khach-hang/danh-sach?page=1&limit=20'/>">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Xuất hàng
+                    </a>
+                    <b class="arrow"></b>
+                </li>
             </ul>
         </li>
     </ul>

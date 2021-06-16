@@ -1,13 +1,13 @@
 package com.quanlykho.converter;
 
-import com.quanlykho.dto.SuplierDTO;
-import com.quanlykho.entity.SuplierEntity;
+import com.quanlykho.dto.CustomerDTO;
+import com.quanlykho.entity.CustomerEntity;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SuplierConverter {
-    public SuplierDTO toDTO(SuplierEntity entity) {
-        SuplierDTO result = new SuplierDTO();
+public class CustomerConverter {
+    public CustomerDTO toDTO(CustomerEntity entity) {
+        CustomerDTO result = new CustomerDTO();
         result.setId(entity.getId());
         result.setDisplayName(entity.getDisplayName());
         result.setEmail(entity.getEmail());
@@ -21,9 +21,8 @@ public class SuplierConverter {
         return result;
     }
 
-
-    public SuplierEntity toEntity(SuplierDTO dto){
-        SuplierEntity result = new SuplierEntity();
+    public CustomerEntity toEntity(CustomerDTO dto){
+        CustomerEntity result = new CustomerEntity();
         result.setDisplayName(dto.getDisplayName());
         result.setEmail(dto.getEmail());
         result.setPhone(dto.getPhone());
@@ -32,7 +31,7 @@ public class SuplierConverter {
         return result;
     }
 
-    public SuplierEntity toEntity(SuplierEntity result, SuplierDTO dto){
+    public CustomerEntity toEntity(CustomerEntity result, CustomerDTO dto){
         result.setDisplayName(dto.getDisplayName());
         result.setEmail(dto.getEmail());
         result.setPhone(dto.getPhone());
