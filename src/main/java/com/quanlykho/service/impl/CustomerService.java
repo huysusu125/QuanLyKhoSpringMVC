@@ -10,7 +10,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class CustomerService implements ICustomerService {
@@ -58,5 +60,13 @@ public class CustomerService implements ICustomerService {
         for (long id : ids) {
             customerRepository.delete(id);
         }
+    }
+
+    @Override
+    public Map<Long, String> findAll() {
+        Map<Long, String> result = new HashMap<>();
+        List<CustomerEntity> entities = customerRepository.findAll();
+        entities.forEach(customerEntity -> result.put(customerEntity.getId(), customerEntity.getDisplayName()));
+        return result;
     }
 }

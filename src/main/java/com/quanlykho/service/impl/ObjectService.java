@@ -15,7 +15,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ObjectService implements IObjectService {
@@ -79,5 +81,13 @@ public class ObjectService implements IObjectService {
         for (long id : ids) {
             objectRepository.delete(id);
         }
+    }
+
+    @Override
+    public Map<Long, String> findAll() {
+        Map<Long, String> result = new HashMap<>();
+        List<ObjectEntity> entities = objectRepository.findAll();
+        entities.forEach(entity -> result.put((entity.getId()), entity.getDisplayName()));
+        return result;
     }
 }
