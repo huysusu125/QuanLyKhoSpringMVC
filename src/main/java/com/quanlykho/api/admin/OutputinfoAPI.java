@@ -17,11 +17,12 @@ public class OutputinfoAPI {
     }
 
     @PutMapping("/api/outputinfo")
-    public OutputinfoDTO editOutputinfo(@RequestBody OutputinfoDTO outputinfoDTO){
+    public OutputinfoDTO editOutputinfo(@RequestBody OutputinfoDTO outputinfoDTO) {
         return outputinfoService.save(outputinfoDTO);
     }
+
     @DeleteMapping("/api/outputinfo")
-    public void deleteOutputinfo(@RequestBody long[] ids){
+    public void deleteOutputinfo(@RequestBody long[] ids) {
         outputinfoService.delete(ids);
     }
 }

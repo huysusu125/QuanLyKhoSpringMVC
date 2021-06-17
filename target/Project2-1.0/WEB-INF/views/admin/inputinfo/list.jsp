@@ -68,6 +68,10 @@
                                             <th>Số lượng</th>
                                             <th>Đơn giá</th>
                                             <th>Thành tiền</th>
+                                            <th>Người nhập</th>
+                                            <th>Thời gian nhập</th>
+                                            <th>Người sửa</th>
+                                            <th>Thời gian sửa</th>
                                             <th>Thao tác</th>
                                             <th>Chọn</th>
                                         </tr>
@@ -81,6 +85,10 @@
                                                 <td>${item.count}</td>
                                                 <td>${item.price}</td>
                                                 <td>${(item.count * item.price)}</td>
+                                                <td>${item.createdBy}</td>
+                                                <td>${item.createdDate}</td>
+                                                <td>${item.modifiedBy}</td>
+                                                <td>${item.modifiedDate}</td>
                                                 <td>
                                                     <c:url var="updateURL" value="/quan-tri/nhap-hang/chinh-sua">
                                                         <c:param name="id" value="${item.id}"/>
