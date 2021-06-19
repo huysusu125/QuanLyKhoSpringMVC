@@ -33,7 +33,7 @@ public class OutputinfoController {
     @GetMapping("/quan-tri/xuat-hang/danh-sach")
     public ModelAndView showListInputInfo(@RequestParam("page") int page,
                                           @RequestParam("limit") int limit,
-                                          HttpServletRequest request){
+                                          HttpServletRequest request) {
         OutputinfoDTO model = new OutputinfoDTO();
         model.setPage(page);
         model.setLimit(limit);
@@ -47,6 +47,25 @@ public class OutputinfoController {
             mav.addObject("message", message.get("message"));
             mav.addObject("alert", message.get("alert"));
         }
+        mav.addObject("model", model);
+        return mav;
+    }
+
+    @GetMapping("/quan-tri/xuat-hang/chinh-sua")
+    public ModelAndView editOutputinfo(@RequestParam(value = "id", required = false) Long id, HttpServletRequest request) {
+        ModelAndView mav = new ModelAndView("admin/outputinfo/edit");
+        OutputinfoDTO model = new OutputinfoDTO();
+        if (id != null) {
+            model = outputinfoService.findById(id);
+        }
+
+        if (request.getParameter("message") != null) {
+            Map<String, String> message = messageUtil.getMessage(request.getParameter("message"));
+            mav.addObject("message", message.get("message"));
+            mav.addObject("alert", message.get("alert"));
+        }
+        mav.addObject("customer", customerService.findAll());
+        mav.addObject("object", objectService.findAll());
         mav.addObject("model", model);
         return mav;
     }

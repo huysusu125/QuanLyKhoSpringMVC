@@ -11,8 +11,8 @@ public class OutputinfoConverter {
         result.setId(entity.getId());
         result.setObjectId(entity.getObjects().getId());
         result.setObjectName(entity.getObjects().getDisplayName());
-        result.setCustomerId(entity.getObjects().getSuplier().getId());
-        result.setCustomerName(entity.getObjects().getSuplier().getDisplayName());
+        result.setCustomerId(entity.getCustomers().getId());
+        result.setCustomerName(entity.getCustomers().getDisplayName());
         result.setUnitId(entity.getObjects().getUnit().getId());
         result.setUnitName(entity.getObjects().getUnit().getDisplayName());
         result.setCount(entity.getCount());

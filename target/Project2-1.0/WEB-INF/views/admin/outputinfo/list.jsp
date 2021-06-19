@@ -64,7 +64,7 @@
                                         <tr>
                                             <th>Tên mặt hàng</th>
                                             <th>Đơn vị</th>
-                                            <th>Nhà cung cấp</th>
+                                            <th>Khách hàng</th>
                                             <th>Số lượng</th>
                                             <th>Đơn giá</th>
                                             <th>Thành tiền</th>

@@ -51,18 +51,18 @@ public class OutputinfoService implements IOutputinfoService {
 
     @Override
     public OutputinfoDTO save(OutputinfoDTO dto) {
+        ObjectEntity object = objectRepository.findOne(dto.getObjectId());
+        CustomerEntity customer = customerRepository.findOne(dto.getCustomerId());
         OutputinfoEntity outputinfo;
-        ObjectEntity objectEntity = objectRepository.findOne(dto.getObjectId());
-        CustomerEntity customerEntity = customerRepository.findOne(dto.getId());
         if (dto.getId() != null) {
             OutputinfoEntity oldOutputinfo = outputinfoRepository.findOne(dto.getId());
-            oldOutputinfo.setObjects(objectEntity);
-            oldOutputinfo.setCustomers(customerEntity);
+            oldOutputinfo.setObjects(object);
+            oldOutputinfo.setCustomers(customer);
             outputinfo = outputinfoConverter.toEntity(oldOutputinfo, dto);
         } else {
             outputinfo = outputinfoConverter.toEntity(dto);
-            outputinfo.setObjects(objectEntity);
-            outputinfo.setCustomers(customerEntity);
+            outputinfo.setObjects(object);
+            outputinfo.setCustomers(customer);
         }
         return outputinfoConverter.toDTO(outputinfoRepository.save(outputinfo));
     }

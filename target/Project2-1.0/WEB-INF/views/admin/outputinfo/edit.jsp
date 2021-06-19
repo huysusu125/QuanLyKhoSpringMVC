@@ -1,8 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@include file="/common/taglib.jsp"%>
-<c:url var="newURL" value="/quan-tri/nhap-hang/danh-sach"/>
-<c:url var="editNewURL" value="/quan-tri/nhap-hang/chinh-sua"/>
-<c:url var="newAPI" value="/api/inputinfo"/>
+<c:url var="newURL" value="/quan-tri/xuat-hang/danh-sach"/>
+<c:url var="editNewURL" value="/quan-tri/xuat-hang/chinh-sua"/>
+<c:url var="newAPI" value="/api/outputinfo"/>
 <html>
 <head>
     <title>Chỉnh sửa</title>
@@ -40,8 +40,17 @@
                             <label for="objectId" class="col-sm-3 control-label no-padding-right">Tên mặt hàng</label>
                             <div class="col-sm-9">
                                 <form:select path="objectId" id="objectId">
-                                    <form:option value="" label="-- Chọn đơn vị --"/>
+                                    <form:option value="" label="-- Chọn mặt hàng --"/>
                                     <form:options items="${object}"/>
+                                </form:select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="objectId" class="col-sm-3 control-label no-padding-right">Khách hàng</label>
+                            <div class="col-sm-9">
+                                <form:select path="customerId" id="customerId">
+                                    <form:option value="" label="-- Chọn khách hàng --"/>
+                                    <form:options items="${customer}"/>
                                 </form:select>
                             </div>
                         </div>
@@ -79,7 +88,7 @@
                                     Hủy
                                 </button>
                                 <button class="btn" style="background-color: #6fb3e0!important;border-color: #6fb3e0!important ;margin-left:20px ">
-                                    <a style="color: #FFFFFF "href="<c:url value='/quan-tri/nhap-hang/danh-sach?page=1&limit=20'/>">
+                                    <a style="color: #FFFFFF "href="<c:url value='/quan-tri/xuat-hang/danh-sach?page=1&limit=20'/>">
                                         Danh sách
                                     </a>
                                 </button>
