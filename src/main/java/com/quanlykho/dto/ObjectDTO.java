@@ -12,6 +12,16 @@ public class ObjectDTO extends AbstractDTO<ObjectDTO>{
 
     private String suplierName;
 
+    private Long count;
+
+    public Long getCount() {
+        return count;
+    }
+
+    public void setCount(Long count) {
+        this.count = count;
+    }
+
     public String getUnitName() {
         return unitName;
     }

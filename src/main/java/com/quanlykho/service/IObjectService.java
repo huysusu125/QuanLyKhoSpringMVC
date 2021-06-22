@@ -13,4 +13,5 @@ public interface IObjectService {
     ObjectDTO save(ObjectDTO dto);
     void delete(long[] ids);
     Map<Long, String> findAll();
+
 }

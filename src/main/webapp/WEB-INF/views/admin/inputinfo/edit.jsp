@@ -52,7 +52,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="price" class="col-sm-3 control-label no-padding-right">Số lượng</label>
+                            <label for="price" class="col-sm-3 control-label no-padding-right">Đơn giá</label>
                             <div class="col-sm-9">
                                 <form:input path="price" cssClass="col-xs-10 col-sm-5" id="price" name="price"/>
                             </div>

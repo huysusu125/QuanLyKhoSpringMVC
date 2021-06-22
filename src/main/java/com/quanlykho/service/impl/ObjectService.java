@@ -2,22 +2,15 @@ package com.quanlykho.service.impl;
 
 import com.quanlykho.converter.ObjectConverter;
 import com.quanlykho.dto.ObjectDTO;
-import com.quanlykho.entity.ObjectEntity;
-import com.quanlykho.entity.SuplierEntity;
-import com.quanlykho.entity.UnitEntity;
-import com.quanlykho.repository.ObjectRepository;
-import com.quanlykho.repository.SuplierRepository;
-import com.quanlykho.repository.UnitRepository;
+import com.quanlykho.entity.*;
+import com.quanlykho.repository.*;
 import com.quanlykho.service.IObjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class ObjectService implements IObjectService {
@@ -34,14 +27,42 @@ public class ObjectService implements IObjectService {
     @Autowired
     private SuplierRepository suplierRepository;
 
+    @Autowired
+    private InputinfoRepository inputinfoRepository;
+
+    @Autowired
+    private OutputinfoRepository outputinfoRepository;
+
     @Override
     public List<ObjectDTO> findAll(Pageable pageable) {
         List<ObjectDTO> models = new ArrayList<>();
         List<ObjectEntity> entities = objectRepository.findAll(pageable).getContent();
-        entities.forEach(item -> {
-            ObjectDTO objectDTO = objectConverter.toDTO(item);
-            models.add(objectDTO);
-        });
+        List<InputinfoEntity> inputs = inputinfoRepository.findAll();
+        List<OutputinfoEntity> outputs = outputinfoRepository.findAll();
+        if (inputs.size() * outputs.size() != 0) {
+            entities.forEach(item -> {
+                long count = 0;
+                for (InputinfoEntity input : inputs) {
+                    if (Objects.equals(input.getObjects().getId(), item.getId())) {
+                        count += input.getCount();
+                    }
+                }
+                for (OutputinfoEntity output : outputs) {
+                    if (Objects.equals(output.getObjects().getId(), item.getId())){
+                        count -= output.getCount();
+                    }
+                }
+                ObjectDTO objectDTO = objectConverter.toDTO(item);
+                objectDTO.setCount(count);
+                models.add(objectDTO);
+
+            });
+        } else {
+            entities.forEach(item -> {
+                ObjectDTO objectDTO = objectConverter.toDTO(item);
+                models.add(objectDTO);
+            });
+        }
         return models;
     }
 
