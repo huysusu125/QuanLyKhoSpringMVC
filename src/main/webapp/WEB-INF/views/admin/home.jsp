@@ -28,24 +28,7 @@
             <div class="widget-box table-filter">
               <div class="table-btn-controls">
                 <div class="pull-right tableTools-container">
-                  <div class="dt-buttons btn-overlap btn-group">
-                    <c:url var="createURL" value="/quan-tri/xuat-hang/chinh-sua"/>
-                    <a flag="info"
-                       class="dt-button buttons-colvis btn btn-white btn-primary btn-bold"
-                       data-toggle="tooltip"
-                       title='Thêm' href='${createURL}'>
-															<span>
-																<i class="fa fa-plus-circle bigger-110 purple"></i>
-															</span>
-                    </a>
-                    <button id="btnDelete" type="button" onclick="warningBeforeDelete()"
-                            class="dt-button buttons-html5 btn btn-white btn-primary btn-bold"
-                            data-toggle="tooltip" title='Xóa bài viết'>
-																<span>
-																	<i class="fa fa-trash-o bigger-110 pink"></i>
-																</span>
-                    </button>
-                  </div>
+
                 </div>
               </div>
             </div>

@@ -1,4 +1,4 @@
-package com.quanlykho.controller.admin;
+package com.quanlykho.controller.staff;
 
 import com.quanlykho.dto.OutputinfoDTO;
 import com.quanlykho.service.ICustomerService;
@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
-@RestController("outputinfoControllerOfAdmin")
+@RestController("outputinfoControllerOfStaff")
 public class OutputinfoController {
     @Autowired
     private MessageUtil messageUtil;
@@ -30,14 +30,14 @@ public class OutputinfoController {
     @Autowired
     private ICustomerService customerService;
 
-    @GetMapping("/quan-tri/xuat-hang/danh-sach")
+    @GetMapping("/xuat-hang/danh-sach")
     public ModelAndView showListInputInfo(@RequestParam("page") int page,
                                           @RequestParam("limit") int limit,
                                           HttpServletRequest request) {
         OutputinfoDTO model = new OutputinfoDTO();
         model.setPage(page);
         model.setLimit(limit);
-        ModelAndView mav = new ModelAndView("admin/outputinfo/list");
+        ModelAndView mav = new ModelAndView("staff/outputinfo/list");
         Pageable pageable = new PageRequest(page - 1, limit);
         model.setListResult(outputinfoService.findAll(pageable));
         model.setTotalItem(outputinfoService.getTotalItem());
@@ -51,9 +51,9 @@ public class OutputinfoController {
         return mav;
     }
 
-    @GetMapping("/quan-tri/xuat-hang/chinh-sua")
+    @GetMapping("/xuat-hang/chinh-sua")
     public ModelAndView editOutputinfo(@RequestParam(value = "id", required = false) Long id, HttpServletRequest request) {
-        ModelAndView mav = new ModelAndView("admin/outputinfo/edit");
+        ModelAndView mav = new ModelAndView("staff/outputinfo/edit");
         OutputinfoDTO model = new OutputinfoDTO();
         if (id != null) {
             model = outputinfoService.findById(id);
@@ -70,3 +70,4 @@ public class OutputinfoController {
         return mav;
     }
 }
+

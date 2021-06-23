@@ -1,9 +1,8 @@
-package com.quanlykho.controller.admin;
+package com.quanlykho.controller.staff;
 
-import com.quanlykho.dto.OutputinfoDTO;
-import com.quanlykho.service.ICustomerService;
+import com.quanlykho.dto.InputinfoDTO;
+import com.quanlykho.service.IInputinfoService;
 import com.quanlykho.service.IObjectService;
-import com.quanlykho.service.IOutputinfoService;
 import com.quanlykho.util.MessageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -16,31 +15,28 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
-@RestController("outputinfoControllerOfAdmin")
-public class OutputinfoController {
+@RestController("inputinfoControllerOfStaff")
+public class InputinfoController {
     @Autowired
     private MessageUtil messageUtil;
 
     @Autowired
+    private IInputinfoService inputinfoService;
+
+    @Autowired
     private IObjectService objectService;
 
-    @Autowired
-    private IOutputinfoService outputinfoService;
-
-    @Autowired
-    private ICustomerService customerService;
-
-    @GetMapping("/quan-tri/xuat-hang/danh-sach")
+    @GetMapping("/nhap-hang/danh-sach")
     public ModelAndView showListInputInfo(@RequestParam("page") int page,
                                           @RequestParam("limit") int limit,
                                           HttpServletRequest request) {
-        OutputinfoDTO model = new OutputinfoDTO();
+        InputinfoDTO model = new InputinfoDTO();
         model.setPage(page);
         model.setLimit(limit);
-        ModelAndView mav = new ModelAndView("admin/outputinfo/list");
+        ModelAndView mav = new ModelAndView("staff/inputinfo/list");
         Pageable pageable = new PageRequest(page - 1, limit);
-        model.setListResult(outputinfoService.findAll(pageable));
-        model.setTotalItem(outputinfoService.getTotalItem());
+        model.setListResult(inputinfoService.findAll(pageable));
+        model.setTotalItem(inputinfoService.getTotalItem());
         model.setTotalPage((int) Math.ceil((double) model.getTotalItem() / model.getLimit()));
         if (request.getParameter("message") != null) {
             Map<String, String> message = messageUtil.getMessage(request.getParameter("message"));
@@ -51,20 +47,18 @@ public class OutputinfoController {
         return mav;
     }
 
-    @GetMapping("/quan-tri/xuat-hang/chinh-sua")
-    public ModelAndView editOutputinfo(@RequestParam(value = "id", required = false) Long id, HttpServletRequest request) {
-        ModelAndView mav = new ModelAndView("admin/outputinfo/edit");
-        OutputinfoDTO model = new OutputinfoDTO();
+    @GetMapping("/nhap-hang/chinh-sua")
+    public ModelAndView editInputinfo(@RequestParam(value = "id", required = false) Long id, HttpServletRequest request) {
+        ModelAndView mav = new ModelAndView("staff/inputinfo/edit");
+        InputinfoDTO model = new InputinfoDTO();
         if (id != null) {
-            model = outputinfoService.findById(id);
+            model = inputinfoService.findById(id);
         }
-
         if (request.getParameter("message") != null) {
             Map<String, String> message = messageUtil.getMessage(request.getParameter("message"));
             mav.addObject("message", message.get("message"));
             mav.addObject("alert", message.get("alert"));
         }
-        mav.addObject("customer", customerService.findAll());
         mav.addObject("object", objectService.findAll());
         mav.addObject("model", model);
         return mav;
